@@ -11,14 +11,14 @@ namespace TETRIS
     public class Piece
     {
         private Point currPosition;
-        private Point[] currShape;
+        private Point[] currForme; //on récupère les valeurs X et Y de notre plateau
         private Brush Couleur;
         private bool rotate;
         public Piece()
         {
             currPosition = new Point(0, 0);
             Couleur = Brushes.Transparent;
-            currShape = setRandomFormes();
+            currForme = setRandomFormes();
 
         }
         public Brush getCouleur()
@@ -31,7 +31,7 @@ namespace TETRIS
         }
         public Point[] getForme()
         {
-            return currShape;
+            return currForme;
         }
         public void movLeft()
         {
@@ -49,11 +49,11 @@ namespace TETRIS
         {
             if (rotate)
             {
-                for (int i = 0; i < currShape.Length; i++)
+                for (int i = 0; i < currForme.Length; i++)
                 {
-                    double x = currShape[i].X;
-                    currShape[i].X = currShape[i].Y * -1;
-                    currShape[i].Y = x;
+                    double x = currForme[i].X;
+                    currForme[i].X = currForme[i].Y * -1;
+                    currForme[i].Y = x;
                 }
             }
         }

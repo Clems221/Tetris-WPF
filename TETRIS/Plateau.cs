@@ -182,12 +182,9 @@ namespace TETRIS
                 {
                     move = false;
                     // Ne marche pas !
-                    if (((int)(S.Y + Position.Y) + 2 + 1) <= 1)
+                    if (S.X + Position.X == 0 && S.Y + Position.Y == 0)
                     {
-                        MessageBox.Show("GAME OVER\n\nSCORE:" + Score.ToString("   000000") +
-                            "\nLIGNES:" + LignesRemplies.ToString("   000000"));
-                        Application Tetris = Application.Current;
-                        Tetris.Shutdown();
+                        partiePerdue();
                     }
                 }
             }
@@ -224,8 +221,7 @@ namespace TETRIS
                 {
                     move = false;
                 }
-
-                //problème lors de la rotation au bord
+                //problème lors de la rotation au bord droit
                 else if (BlockControls[((int)(S[i].X + Position.X) + ((Colonnes / 2) - 1)),
                     (int)(S[i].Y + Position.Y) + 2].Background != Nocolor)
                 {
@@ -248,6 +244,13 @@ namespace TETRIS
             }
         }
 
+        public void partiePerdue ()
+        {
+            MessageBox.Show("GAME OVER\n\nSCORE:" + Score.ToString("   000000") +
+                            "\nLIGNES:" + LignesRemplies.ToString("   000000"));
+            Application Tetris = Application.Current;
+            Tetris.Shutdown();
+        }
     }
 }
 

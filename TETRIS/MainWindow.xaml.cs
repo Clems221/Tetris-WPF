@@ -36,8 +36,8 @@ namespace TETRIS
         }
         private void GameStart()
         {
-            MainGrid.Children.Clear();
-            monPlateau = new Plateau(MainGrid);
+            PlateauTetris.Children.Clear();
+            monPlateau = new Plateau(PlateauTetris);
             Timer.Start();
         }
         void GameTick(object sender, EventArgs e)
