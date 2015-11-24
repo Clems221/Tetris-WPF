@@ -12,11 +12,11 @@ namespace TETRIS
 
     public class Plateau
     {
-        private int Rows;
-        private int Cols;
+        private int Lignes;
+        private int Colonnes;
         private int Score;
         private int LignesRemplies;
-        private Piece currJeu;
+        private Piece Piece;
         private Label[,] BlockControls;
 
         static private Brush Nocolor = Brushes.Transparent;
@@ -25,15 +25,15 @@ namespace TETRIS
 
         public Plateau(Grid TetrisGrid)
         {
-            Rows = TetrisGrid.RowDefinitions.Count;
-            Cols = TetrisGrid.ColumnDefinitions.Count;
+            Lignes = TetrisGrid.RowDefinitions.Count;
+            Colonnes = TetrisGrid.ColumnDefinitions.Count;
             Score = 0;
             LignesRemplies = 0;
 
-            BlockControls = new Label[Cols, Rows];
-            for (int i = 0; i < Cols; i++)
+            BlockControls = new Label[Colonnes, Lignes];
+            for (int i = 0; i < Colonnes; i++)
             {
-                for (int j = 0; j < Rows; j++)
+                for (int j = 0; j < Lignes; j++)
                 {
                     BlockControls[i, j] = new Label();
                     BlockControls[i, j].Background = Nocolor;
@@ -44,8 +44,8 @@ namespace TETRIS
                     TetrisGrid.Children.Add(BlockControls[i, j]);
                 }
             }
-            currJeu = new Piece();
-            currJeuDessin();
+            Piece = new Piece();
+            pieceDessin();
         }
         public int getScore()
         {
@@ -55,34 +55,34 @@ namespace TETRIS
         {
             return LignesRemplies;
         }
-        private void currJeuDessin()
+        private void pieceDessin()
         {
-            Point Position = currJeu.getCurrPosition();
-            Point[] Shape = currJeu.getCurrShape();
-            Brush Color = currJeu.getCurrColor();
+            Point Position = Piece.getPosition();
+            Point[] Shape = Piece.getForme();
+            Brush Color = Piece.getCouleur();
             foreach (Point S in Shape)
             {
-                BlockControls[(int)(S.X + Position.X) + ((Cols / 2) - 1),
+                BlockControls[(int)(S.X + Position.X) + ((Colonnes / 2) - 1),
                     (int)(S.Y + Position.Y) + 2].Background = Color;
             }
         }
         private void currJeuSuppr()
         {
-            Point Position = currJeu.getCurrPosition();
-            Point[] Shape = currJeu.getCurrShape();
-            foreach (Point S in Shape)
+            Point Position = Piece.getPosition();
+            Point[] Forme = Piece.getForme();
+            foreach (Point S in Forme)
             {
-                BlockControls[(int)(S.X + Position.X) + ((Cols / 2) - 1),
+                BlockControls[(int)(S.X + Position.X) + ((Colonnes / 2) - 1),
                     (int)(S.Y + Position.Y) + 2].Background = Nocolor;
             }
         }
-        private void CheckRows()
+        private void CheckLignes()
         {
             bool rempli;
-            for (int i = Rows - 1; i > 0; i--)
+            for (int i = Lignes - 1; i > 0; i--)
             {
                 rempli = true;
-                for (int j = 0; j < Cols; j++)
+                for (int j = 0; j < Colonnes; j++)
                 {
                     if (BlockControls[j, i].Background == Nocolor)
                     {
@@ -92,35 +92,36 @@ namespace TETRIS
 
                 if (rempli)
                 {
-                    SupprRow(i);
+                    SupprLigne(i);
                     Score += 120;
                     LignesRemplies += 1;
+                    i++;
                 }
             }
         }
-        private void SupprRow(int row)
+        private void SupprLigne(int row)
         {
             for (int i = row; i > 2; i--)
             {
-                for (int j = 0; j < Cols; j++)
+                for (int j = 0; j < Colonnes; j++)
                 {
                     BlockControls[j, i].Background = BlockControls[j, i - 1].Background;
                 }
             }
         }
-        public void CurrJeuMovLeft()
+        public void PieceMovLeft()
         {
-            Point Position = currJeu.getCurrPosition();
-            Point[] Shape = currJeu.getCurrShape();
+            Point Position = Piece.getPosition();
+            Point[] Shape = Piece.getForme();
             bool move = true;
             currJeuSuppr();
             foreach (Point S in Shape)
             {
-                if (((int)(S.X + Position.X) + ((Cols / 2) - 1) - 1) < 0)
+                if (((int)(S.X + Position.X) + ((Colonnes / 2) - 1) - 1) < 0)
                 {
                     move = false;
                 }
-                else if (BlockControls[((int)(S.X + Position.X) + ((Cols / 2) - 1) - 1),
+                else if (BlockControls[((int)(S.X + Position.X) + ((Colonnes / 2) - 1) - 1),
                     (int)(S.Y + Position.Y) + 2].Background != Nocolor)
                 {
                     move = false;
@@ -128,27 +129,27 @@ namespace TETRIS
             }
             if (move)
             {
-                currJeu.movLeft();
-                currJeuDessin();
+                Piece.movLeft();
+                pieceDessin();
             }
             else
             {
-                currJeuDessin();
+                pieceDessin();
             }
         }
-        public void CurrJeuMovRight()
+        public void PieceMovRight()
         {
-            Point Position = currJeu.getCurrPosition();
-            Point[] Shape = currJeu.getCurrShape();
+            Point Position = Piece.getPosition();
+            Point[] Shape = Piece.getForme();
             bool move = true;
             currJeuSuppr();
             foreach (Point S in Shape)
             {
-                if (((int)(S.X + Position.X) + ((Cols / 2) - 1) + 1) >= Cols)
+                if (((int)(S.X + Position.X) + ((Colonnes / 2) - 1) + 1) >= Colonnes)
                 {
                     move = false;
                 }
-                else if (BlockControls[((int)(S.X + Position.X) + ((Cols / 2) - 1) + 1),
+                else if (BlockControls[((int)(S.X + Position.X) + ((Colonnes / 2) - 1) + 1),
                     (int)(S.Y + Position.Y) + 2].Background != Nocolor)
                 {
                     move = false;
@@ -156,30 +157,31 @@ namespace TETRIS
             }
             if (move)
             {
-                currJeu.movRight();
-                currJeuDessin();
+                Piece.movRight();
+                pieceDessin();
             }
             else
             {
-                currJeuDessin();
+                pieceDessin();
             }
         }
-        public void CurrJeuMovDown()
+        public void PieceMovDown()
         {
-            Point Position = currJeu.getCurrPosition();
-            Point[] Shape = currJeu.getCurrShape();
+            Point Position = Piece.getPosition();
+            Point[] Shape = Piece.getForme();
             bool move = true;
             currJeuSuppr();
             foreach (Point S in Shape)
             {
-                if (((int)(S.Y + Position.Y) + 2 + 1) >= Rows)
+                if (((int)(S.Y + Position.Y) + 2 + 1) >= Lignes)
                 {
                     move = false;
                 }
-                else if (BlockControls[((int)(S.X + Position.X) + ((Cols / 2) - 1)),
+                else if (BlockControls[((int)(S.X + Position.X) + ((Colonnes / 2) - 1)),
                     (int)(S.Y + Position.Y) + 2 + 1].Background != Nocolor)
                 {
                     move = false;
+                    // Ne marche pas !
                     if (((int)(S.Y + Position.Y) + 2 + 1) <= 1)
                     {
                         MessageBox.Show("GAME OVER\n\nSCORE:" + Score.ToString("   000000") +
@@ -191,21 +193,21 @@ namespace TETRIS
             }
             if (move)
             {
-                currJeu.movDown();
-                currJeuDessin();
+                Piece.movDown();
+                pieceDessin();
             }
             else
             {
-                currJeuDessin();
-                CheckRows();
-                currJeu = new Piece();
+                pieceDessin();
+                CheckLignes();
+                Piece = new Piece();
             }
         }
-        public void CurrJeuMovRotate()
+        public void PieceRotation()
         {
-            Point Position = currJeu.getCurrPosition();
+            Point Position = Piece.getPosition();
             Point[] S = new Point[4];
-            Point[] Shape = currJeu.getCurrShape();
+            Point[] Shape = Piece.getForme();
             bool move = true;
             Shape.CopyTo(S, 0);
             currJeuSuppr();
@@ -214,32 +216,35 @@ namespace TETRIS
                 double x = S[i].X;
                 S[i].X = S[i].Y * -1;
                 S[i].Y = x;
-                if (((int)((S[i].Y + Position.Y) + 2)) >= Rows)
+                if (((int)((S[i].Y + Position.Y) + 2)) >= Lignes)
                 {
                     move = false;
                 }
-                else if (((int)(S[i].X + Position.X) + ((Cols / 2) - 1)) < 0)
+                else if (((int)(S[i].X + Position.X) + ((Colonnes / 2) - 1)) < 0)
                 {
                     move = false;
                 }
-                else if (((int)(S[i].X + Position.X) + ((Cols / 2) - 1)) >= Rows)
-                {
-                    move = false;
-                }
-                else if (BlockControls[((int)(S[i].X + Position.X) + ((Cols / 2) - 1)),
+
+                //problème lors de la rotation au bord
+                else if (BlockControls[((int)(S[i].X + Position.X) + ((Colonnes / 2) - 1)),
                     (int)(S[i].Y + Position.Y) + 2].Background != Nocolor)
                 {
                     move = false;
                 }
+                else if (((int)(S[i].X + Position.X) + ((Colonnes / 2) - 1)) >= Lignes)
+                {
+                    move = false;
+                }
+                
             }
             if (move)
             {
-                currJeu.movRotate();
-                currJeuDessin();
+                Piece.movRotate();
+                pieceDessin();
             }
             else
             {
-                currJeuDessin();
+                pieceDessin();
             }
         }
 

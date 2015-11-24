@@ -12,24 +12,24 @@ namespace TETRIS
     {
         private Point currPosition;
         private Point[] currShape;
-        private Brush currColor;
+        private Brush Couleur;
         private bool rotate;
         public Piece()
         {
             currPosition = new Point(0, 0);
-            currColor = Brushes.Transparent;
+            Couleur = Brushes.Transparent;
             currShape = setRandomFormes();
 
         }
-        public Brush getCurrColor()
+        public Brush getCouleur()
         {
-            return currColor;
+            return Couleur;
         }
-        public Point getCurrPosition()
+        public Point getPosition()
         {
             return currPosition;
         }
-        public Point[] getCurrShape()
+        public Point[] getForme()
         {
             return currShape;
         }
@@ -64,7 +64,7 @@ namespace TETRIS
             {
                 case 0: // I
                     rotate = true;
-                    currColor = Brushes.Cyan;
+                    Couleur = Brushes.Cyan;
                     return new Point[] {
                         new Point(0,0),
                         new Point(-1,0),
@@ -73,7 +73,7 @@ namespace TETRIS
                     };
                 case 1: // J
                     rotate = true;
-                    currColor = Brushes.Blue;
+                    Couleur = Brushes.Blue;
                     return new Point[] {
                         new Point(1,-1),
                         new Point(-1,0),
@@ -82,16 +82,16 @@ namespace TETRIS
                     };
                 case 2: // L
                     rotate = true;
-                    currColor = Brushes.Orange;
+                    Couleur = Brushes.Orange;
                     return new Point[] {
                         new Point(0,0),
                         new Point(-1,0),
                         new Point(1,0),
                         new Point(1,-1),
                     };
-                case 3: // O
+                case 3: // Carré
                     rotate = false;
-                    currColor = Brushes.Yellow;
+                    Couleur = Brushes.Yellow;
                     return new Point[] {
                         new Point(0,0),
                         new Point(0,1),
@@ -100,7 +100,7 @@ namespace TETRIS
                     };
                 case 4: // S
                     rotate = true;
-                    currColor = Brushes.Green;
+                    Couleur = Brushes.Green;
                     return new Point[] {
                         new Point(0,0),
                         new Point(-1,0),
@@ -109,7 +109,7 @@ namespace TETRIS
                     };
                 case 5: // T
                     rotate = true;
-                    currColor = Brushes.Purple;
+                    Couleur = Brushes.Purple;
                     return new Point[] {
                         new Point(0,0),
                         new Point(-1,0),
@@ -118,7 +118,7 @@ namespace TETRIS
                     };
                 case 6: // Z
                     rotate = true;
-                    currColor = Brushes.Red;
+                    Couleur = Brushes.Red;
                     return new Point[] {
                         new Point(0,0),
                         new Point(-1,0),

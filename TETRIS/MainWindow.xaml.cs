@@ -44,7 +44,7 @@ namespace TETRIS
         {
             Score.Content = monPlateau.getScore().ToString("000000");
             Lignes.Content = monPlateau.getLignes().ToString("000000");
-            monPlateau.CurrJeuMovDown();
+            monPlateau.PieceMovDown();
         }
         private void GamePause()
         {
@@ -62,22 +62,26 @@ namespace TETRIS
             switch (e.Key)
             {
                 case Key.Left:
-                    if (Timer.IsEnabled) monPlateau.CurrJeuMovLeft();
+                    if (Timer.IsEnabled) monPlateau.PieceMovLeft();
                     break;
                 case Key.Right:
-                    if (Timer.IsEnabled) monPlateau.CurrJeuMovRight();
+                    if (Timer.IsEnabled) monPlateau.PieceMovRight();
                     break;
                 case Key.Down:
-                    if (Timer.IsEnabled) monPlateau.CurrJeuMovDown();
+                    if (Timer.IsEnabled) monPlateau.PieceMovDown();
                     break;
                 case Key.Up:
-                    if (Timer.IsEnabled) monPlateau.CurrJeuMovRotate();
+                    if (Timer.IsEnabled) monPlateau.PieceRotation();
                     break;
                 case Key.F2:
                     GameStart();
                     break;
                 case Key.F3:
                     GamePause();
+                    break;
+                case Key.Escape:
+                    Application Tetris = Application.Current;
+                    Tetris.Shutdown();
                     break;
                 default:
                     break;
