@@ -19,7 +19,6 @@ namespace TETRIS
             currPosition = new Point(0, 0);
             Couleur = Brushes.Transparent;
             currForme = setRandomFormes();
-
         }
         public Brush getCouleur()
         {
@@ -66,37 +65,37 @@ namespace TETRIS
                     rotate = true;
                     Couleur = Brushes.Cyan;
                     return new Point[] {
-                        new Point(0,0),
-                        new Point(-1,0),
-                        new Point(1,0),
-                        new Point(2,0),
+                        new Point(0,-1),
+                        new Point(-1,-1),
+                        new Point(1,-1),
+                        new Point(2,-1)
                     };
                 case 1: // J
                     rotate = true;
                     Couleur = Brushes.Blue;
                     return new Point[] {
-                        new Point(1,-1),
+                        new Point(-1,-1),
                         new Point(-1,0),
                         new Point(0,0),
-                        new Point(1,0),
+                        new Point(1,0)
                     };
                 case 2: // L
                     rotate = true;
-                    Couleur = Brushes.Orange;
+                    Couleur = Brushes.HotPink;
                     return new Point[] {
                         new Point(0,0),
                         new Point(-1,0),
                         new Point(1,0),
-                        new Point(1,-1),
+                        new Point(1,-1)
                     };
                 case 3: // Carré
                     rotate = false;
-                    Couleur = Brushes.Yellow;
+                    Couleur = Brushes.Gold;
                     return new Point[] {
                         new Point(0,0),
-                        new Point(0,1),
+                        new Point(0,-1),
                         new Point(1,0),
-                        new Point(1,1),
+                        new Point(1,-1)
                     };
                 case 4: // S
                     rotate = true;
@@ -122,8 +121,8 @@ namespace TETRIS
                     return new Point[] {
                         new Point(0,0),
                         new Point(-1,0),
-                        new Point(0,1),
-                        new Point(1,1),
+                        new Point(0,-1),
+                        new Point(1,0)
                     };
                 default:
                     return null;

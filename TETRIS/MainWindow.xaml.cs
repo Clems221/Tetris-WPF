@@ -40,7 +40,7 @@ namespace TETRIS
             monPlateau = new Plateau(PlateauTetris);
             Timer.Start();
         }
-        void GameTick(object sender, EventArgs e)
+        private void GameTick(object sender, EventArgs e)
         {
             Score.Content = monPlateau.getScore().ToString("000000");
             Lignes.Content = monPlateau.getLignes().ToString("000000");

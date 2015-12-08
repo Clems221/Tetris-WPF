@@ -22,7 +22,6 @@ namespace TETRIS
         static private Brush Nocolor = Brushes.Transparent;
         static private Brush GrayColor = Brushes.Gray;
 
-
         public Plateau(Grid TetrisGrid)
         {
             Lignes = TetrisGrid.RowDefinitions.Count;
@@ -58,12 +57,12 @@ namespace TETRIS
         private void pieceDessin()
         {
             Point Position = Piece.getPosition();
-            Point[] Shape = Piece.getForme();
+            Point[] Forme = Piece.getForme();
             Brush Color = Piece.getCouleur();
-            foreach (Point S in Shape)
+            foreach (Point S in Forme)
             {
                 BlockControls[(int)(S.X + Position.X) + ((Colonnes / 2) - 1),
-                    (int)(S.Y + Position.Y) + 2].Background = Color;
+                              (int)(S.Y + Position.Y) + 2].Background = Color;
             }
         }
         private void currJeuSuppr()
@@ -112,10 +111,10 @@ namespace TETRIS
         public void PieceMovLeft()
         {
             Point Position = Piece.getPosition();
-            Point[] Shape = Piece.getForme();
+            Point[] Forme = Piece.getForme();
             bool move = true;
             currJeuSuppr();
-            foreach (Point S in Shape)
+            foreach (Point S in Forme)
             {
                 if (((int)(S.X + Position.X) + ((Colonnes / 2) - 1) - 1) < 0)
                 {
@@ -140,10 +139,10 @@ namespace TETRIS
         public void PieceMovRight()
         {
             Point Position = Piece.getPosition();
-            Point[] Shape = Piece.getForme();
+            Point[] Forme = Piece.getForme();
             bool move = true;
             currJeuSuppr();
-            foreach (Point S in Shape)
+            foreach (Point S in Forme)
             {
                 if (((int)(S.X + Position.X) + ((Colonnes / 2) - 1) + 1) >= Colonnes)
                 {
@@ -168,10 +167,10 @@ namespace TETRIS
         public void PieceMovDown()
         {
             Point Position = Piece.getPosition();
-            Point[] Shape = Piece.getForme();
+            Point[] Forme = Piece.getForme();
             bool move = true;
             currJeuSuppr();
-            foreach (Point S in Shape)
+            foreach (Point S in Forme)
             {
                 if (((int)(S.Y + Position.Y) + 2 + 1) >= Lignes)
                 {
@@ -204,9 +203,9 @@ namespace TETRIS
         {
             Point Position = Piece.getPosition();
             Point[] S = new Point[4];
-            Point[] Shape = Piece.getForme();
+            Point[] Forme = Piece.getForme();
             bool move = true;
-            Shape.CopyTo(S, 0);
+            Forme.CopyTo(S, 0);
             currJeuSuppr();
             for (int i = 0; i < S.Length; i++)
             {
@@ -221,7 +220,7 @@ namespace TETRIS
                 {
                     move = false;
                 }
-                //problème lors de la rotation au bord droit
+                //problème lors de la rotation au bord 
                 else if (BlockControls[((int)(S[i].X + Position.X) + ((Colonnes / 2) - 1)),
                     (int)(S[i].Y + Position.Y) + 2].Background != Nocolor)
                 {
@@ -243,11 +242,10 @@ namespace TETRIS
                 pieceDessin();
             }
         }
-
         public void partiePerdue ()
         {
-            MessageBox.Show("GAME OVER\n\nSCORE:" + Score.ToString("   000000") +
-                            "\nLIGNES:" + LignesRemplies.ToString("   000000"));
+            MessageBox.Show("Partie perdue ! \n\n Votre score:" + Score.ToString("000000") +
+                            "\nNombre de lignes remplies:" + LignesRemplies.ToString("000000"));
             Application Tetris = Application.Current;
             Tetris.Shutdown();
         }
