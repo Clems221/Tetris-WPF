@@ -18,10 +18,9 @@ namespace TETRIS
         private int LignesRemplies;
         private Piece Piece;
         private Label[,] BlockControls;
-
         static private Brush Nocolor = Brushes.Transparent;
         static private Brush GrayColor = Brushes.Gray;
-
+        #region création de la grille de jeu
         public Plateau(Grid TetrisGrid)
         {
             Lignes = TetrisGrid.RowDefinitions.Count;
@@ -36,8 +35,8 @@ namespace TETRIS
                 {
                     BlockControls[i, j] = new Label();
                     BlockControls[i, j].Background = Nocolor;
-                    BlockControls[i, j].BorderBrush =GrayColor;
-                    BlockControls[i, j].BorderThickness = new Thickness(1, 1, 1, 1);
+                    BlockControls[i, j].BorderBrush = GrayColor;
+                    BlockControls[i, j].BorderThickness = new Thickness(0.3, 0.3, 0.3, 0.3);
                     Grid.SetRow(BlockControls[i, j], j);
                     Grid.SetColumn(BlockControls[i, j], i);
                     TetrisGrid.Children.Add(BlockControls[i, j]);
@@ -46,6 +45,8 @@ namespace TETRIS
             Piece = new Piece();
             pieceDessin();
         }
+        #endregion
+        #region récupèrer le nombre de lignes et score pour affichage
         public int getScore()
         {
             return Score;
@@ -54,6 +55,8 @@ namespace TETRIS
         {
             return LignesRemplies;
         }
+        #endregion
+        #region colorier les pièces
         private void pieceDessin()
         {
             Point Position = Piece.getPosition();
@@ -65,6 +68,8 @@ namespace TETRIS
                               (int)(S.Y + Position.Y) + 2].Background = Color;
             }
         }
+        #endregion
+        #region Supression de lignes
         private void currJeuSuppr()
         {
             Point Position = Piece.getPosition();
@@ -108,6 +113,8 @@ namespace TETRIS
                 }
             }
         }
+        #endregion
+        #region Mouvements pièces
         public void PieceMovLeft()
         {
             Point Position = Piece.getPosition();
@@ -181,7 +188,7 @@ namespace TETRIS
                 {
                     move = false;
                     // Ne marche pas !
-                    if (S.X + Position.X == 0 && S.Y + Position.Y == 0)
+                    if (S.X + Position.X == 0 && S.Y + Position.Y == -1)
                     {
                         partiePerdue();
                     }
@@ -230,7 +237,7 @@ namespace TETRIS
                 {
                     move = false;
                 }
-                
+
             }
             if (move)
             {
@@ -242,10 +249,11 @@ namespace TETRIS
                 pieceDessin();
             }
         }
-        public void partiePerdue ()
+        #endregion
+        public void partiePerdue()
         {
-            MessageBox.Show("Partie perdue ! \n\n Votre score:" + Score.ToString("000000") +
-                            "\nNombre de lignes remplies:" + LignesRemplies.ToString("000000"));
+            MessageBox.Show("Partie perdue ! \n\nVotre score : " + Score.ToString("000000") +
+                            "\nNombre de lignes remplies : " + LignesRemplies.ToString("000000"));
             Application Tetris = Application.Current;
             Tetris.Shutdown();
         }

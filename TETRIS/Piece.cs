@@ -14,12 +14,16 @@ namespace TETRIS
         private Point[] currForme; //on récupère les valeurs X et Y de notre plateau
         private Brush Couleur;
         private bool rotate;
+
+        //Créér une pièce
         public Piece()
         {
-            currPosition = new Point(0, 0);
+            currPosition = new Point(0, -1);
             Couleur = Brushes.Transparent;
             currForme = setRandomFormes();
         }
+
+        #region Récupèrer la couleur, la position et la forme de la pièce
         public Brush getCouleur()
         {
             return Couleur;
@@ -32,6 +36,8 @@ namespace TETRIS
         {
             return currForme;
         }
+        #endregion
+        #region Méthodes de mouvement des pièces
         public void movLeft()
         {
             currPosition.X -= 1;
@@ -56,6 +62,8 @@ namespace TETRIS
                 }
             }
         }
+        #endregion
+        #region Générer les formes de chaque pièces
         private Point[] setRandomFormes()
         {
             Random rand = new Random();
@@ -81,7 +89,7 @@ namespace TETRIS
                     };
                 case 2: // L
                     rotate = true;
-                    Couleur = Brushes.HotPink;
+                    Couleur = Brushes.Orange;
                     return new Point[] {
                         new Point(0,0),
                         new Point(-1,0),
@@ -90,7 +98,7 @@ namespace TETRIS
                     };
                 case 3: // Carré
                     rotate = false;
-                    Couleur = Brushes.Gold;
+                    Couleur = Brushes.Yellow;
                     return new Point[] {
                         new Point(0,0),
                         new Point(0,-1),
@@ -129,6 +137,7 @@ namespace TETRIS
 
             }
         }
+        #endregion
 
     }
 }

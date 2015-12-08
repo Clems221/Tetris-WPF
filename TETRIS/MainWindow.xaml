@@ -7,23 +7,23 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="558.47" Width="614.891"
         KeyDown="HandleKeyDown" 
-        Initialized="MainWindow_Initialized" ResizeMode="NoResize" Background="#FFD6D6D6" >
+        Initialized="MainWindow_Initialized" ResizeMode="NoResize" Background="#FFE4E4E4" Foreground="#FF2B2B2B" >
     <DockPanel LastChildFill="True">
         <StackPanel DockPanel.Dock="Right" Width="172">
 
-            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Votre score :" FontFamily="Ostrich Sans"/>
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Votre score :" FontFamily="Ostrich Sans" Foreground="#FF4B4B4B" Height="16" FontSize="16"/>
 
-            <Label Content="Label" Height="56" x:Name="Score" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10,0,56,0" Width="106" FontFamily="Ostrich Sans" />
-            <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Nombre de lignes remplies :"/>
-            <Label Content="Label" Height="379" x:Name="Lignes" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10,0,56,0" Width="106" FontFamily="Ostrich Sans" />
-            <TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text="Nouvelle partie (F2)"/>
-            <TextBlock x:Name="textBlock3" TextWrapping="Wrap" Text="Pause (F3)"/>
-            <TextBlock x:Name="textBlock4" TextWrapping="Wrap" Text="Quitter (Échap)"/>
+            <Label Content="Label" Height="56" x:Name="Score" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10,0,56,0" Width="106" FontFamily="Ostrich Sans" Foreground="#FF4B4B4B" />
+            <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Nombre de lignes remplies :" FontFamily="Ostrich Sans" Foreground="#FF4B4B4B" Height="20" FontSize="16"/>
+            <Label Content="Label" Height="361" x:Name="Lignes" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10,0,56,0" Width="106" FontFamily="Ostrich Sans" Foreground="#FF4B4B4B" />
+            <TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text="Nouvelle partie (F2)" Foreground="#FF4B4B4B"/>
+            <TextBlock x:Name="textBlock3" TextWrapping="Wrap" Text="Pause (F3)" Foreground="#FF4B4B4B"/>
+            <TextBlock x:Name="textBlock4" TextWrapping="Wrap" Text="Quitter (Échap)" Foreground="#FF4B4B4B"/>
         </StackPanel>
 
         <Grid Name="PlateauTetris" Width="250" Margin="0,14,0,25">
             <Grid.RowDefinitions>
-                
+
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
@@ -44,7 +44,7 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
-                
+
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />

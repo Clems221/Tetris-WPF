@@ -30,17 +30,19 @@ namespace TETRIS
         void MainWindow_Initialized(object sender, EventArgs e)
         {
             Timer = new DispatcherTimer();
-            Timer.Tick += new EventHandler(GameTick);
+            Timer.Tick += new EventHandler(GameLoaded);
             Timer.Interval = new TimeSpan(0, 0, 0, 0, 600);
             GameStart();
         }
+
+        //Propriétés du jeu
         private void GameStart()
         {
             PlateauTetris.Children.Clear();
             monPlateau = new Plateau(PlateauTetris);
             Timer.Start();
         }
-        private void GameTick(object sender, EventArgs e)
+        private void GameLoaded(object sender, EventArgs e)
         {
             Score.Content = monPlateau.getScore().ToString("000000");
             Lignes.Content = monPlateau.getLignes().ToString("000000");
@@ -57,6 +59,8 @@ namespace TETRIS
                 Timer.Start();
             }
         }
+
+        //Interaction clavier utilisateur
         private void HandleKeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
