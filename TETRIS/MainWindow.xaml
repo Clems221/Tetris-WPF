@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="558.47" Width="614.891"
         KeyDown="HandleKeyDown" 
-        Initialized="MainWindow_Initialized" ResizeMode="NoResize" Background="#FFE4E4E4" Foreground="#FF2B2B2B" >
+        Initialized="MainWindow_Initialized" ResizeMode="NoResize" Background="#FFEEEEEE" Foreground="#FF2B2B2B" >
     <DockPanel LastChildFill="True">
         <StackPanel DockPanel.Dock="Right" Width="172">
 
