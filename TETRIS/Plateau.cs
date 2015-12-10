@@ -9,7 +9,6 @@ using System.Windows.Media;
 
 namespace TETRIS
 {
-
     public class Plateau
     {
         private int Lignes;
