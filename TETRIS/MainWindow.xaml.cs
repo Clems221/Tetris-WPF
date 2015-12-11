@@ -94,7 +94,7 @@ namespace TETRIS
         }
         private void PlaySound()
         {
-            var uri = new Uri("C:\\Users\\Hurrycane\\Documents\\GitHub\\Tetris-WPF\\TETRIS\\TETRIS.aiff");
+            Uri uri = new Uri(".\\TETRIS\\TETRIS.aiff",UriKind.Relative);
             var player = new MediaPlayer();
             player.Open(uri);
             player.Play();
