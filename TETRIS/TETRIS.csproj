@@ -125,6 +125,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="touches.png" />
+    <Resource Include="logo.png" />
     <Content Include="TETRIS.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

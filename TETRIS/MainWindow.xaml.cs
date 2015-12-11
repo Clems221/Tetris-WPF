@@ -95,6 +95,8 @@ namespace TETRIS
                     break;
             }
         }
+
+        //Gestion du son
         private void PlaySound()
         {
             Uri uri = new Uri("TETRIS.wav",UriKind.Relative);
@@ -108,6 +110,5 @@ namespace TETRIS
             player.Position = TimeSpan.Zero;
             player.Play();
         }
-
     }
 }
