@@ -19,6 +19,7 @@ namespace TETRIS
         private Label[,] BlockControls;
         static private Brush Nocolor = Brushes.Transparent;
         static private Brush BlackColor = Brushes.Black;
+        private bool gameFin = false;
         #region création de la grille de jeu
         //Nous avons besoin : lignes, colonnes , score, lignes remplies et quelques effets
         public Plateau(Grid TetrisGrid)
@@ -269,11 +270,15 @@ namespace TETRIS
         #endregion
         public void partiePerdue()
         {
-
-            MessageBox.Show("Partie perdue ! \n\nVotre score : " + Score.ToString("000000") +
+            if (gameFin==false)
+            {
+                gameFin = true;
+                MessageBox.Show("Partie perdue ! \n\nVotre score : " + Score.ToString("000000") +
                             "\nNombre de lignes remplies : " + LignesRemplies.ToString("000000"));
-            Application Tetris = Application.Current;
-            Tetris.Shutdown();
+                Application Tetris = Application.Current;
+                Tetris.Shutdown();
+            }
+            
         }
     }
 }

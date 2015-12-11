@@ -40,7 +40,7 @@ namespace TETRIS
         {
             PlateauTetris.Children.Clear();
             monPlateau = new Plateau(PlateauTetris);
-
+            PlaySound();
             Timer.Start();
         }
         private void GameLoaded(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace TETRIS
         }
         private void PlaySound()
         {
-            var uri = new Uri("TETRIS.mp3");
+            var uri = new Uri("C:\\Users\\Hurrycane\\Documents\\GitHub\\Tetris-WPF\\TETRIS\\TETRIS.aiff");
             var player = new MediaPlayer();
             player.Open(uri);
             player.Play();
