@@ -14,7 +14,7 @@ namespace TETRIS
         private Piece Piece;
         private Label[,] BlockControls;
         static private Brush Nocolor = Brushes.Transparent;
-        static private Brush BlackColor = Brushes.Black;
+        static private Brush BlackColor = Brushes.White;
         private bool gameFin = false;
         #region création de la grille de jeu
         //Nous avons besoin : lignes, colonnes , score, lignes remplies et quelques effets
@@ -46,6 +46,7 @@ namespace TETRIS
             pieceDessin();
         }
         #endregion
+
         #region récupèrer le nombre de lignes et score pour affichage
         public int getScore()
         {
@@ -56,6 +57,7 @@ namespace TETRIS
             return LignesRemplies;
         }
         #endregion
+
         #region Représenter les pièces
         private void pieceDessin()
         {
@@ -69,6 +71,7 @@ namespace TETRIS
             }
         }
         #endregion
+
         #region Supression de lignes
         private void currJeuSuppr()
         {
@@ -98,7 +101,7 @@ namespace TETRIS
                 if (rempli)
                 {
                     SupprLigne(i);
-                    Score += 100;
+                    Score += 150;
                     LignesRemplies += 1;
                     i++;
  
@@ -117,6 +120,7 @@ namespace TETRIS
             }
         }
         #endregion
+
         #region Mouvements pièces
         //Méthodes de vérification pour décaler les pièces vers Gauche/Droite
         public void PieceMovLeft()
@@ -264,6 +268,7 @@ namespace TETRIS
             }
         }
         #endregion
+
         public void partiePerdue()
         {
             if (gameFin == false)

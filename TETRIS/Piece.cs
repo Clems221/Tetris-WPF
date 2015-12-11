@@ -34,6 +34,7 @@ namespace TETRIS
             return currForme;
         }
         #endregion
+
         #region Méthodes de mouvement des pièces
         public void movLeft()
         {
@@ -60,6 +61,7 @@ namespace TETRIS
             }
         }
         #endregion
+
         #region Générer les formes de chaque pièces
         private Point[] setRandomFormes()
         {

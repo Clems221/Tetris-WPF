@@ -11,14 +11,14 @@
 
     <DockPanel LastChildFill="True">
         <Image x:Name="image1" Height="178" VerticalAlignment="Top" Width="30" Source="touches.png" Margin="5,5,0,0"/>
-        <TextBlock x:Name="textBlock5" Height="162" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="4,10,0,0"><Run Text="Tourner"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run Text="Descendre plus vite"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run Text="Pièce vers la gauche"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run Text="Pièce vers la droite"/></TextBlock>
+        <TextBlock x:Name="textBlock5" Height="162" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="4,10,0,0" Foreground="#FFC3C3C3" FontWeight="Bold"><Run Text="Tourner"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run Text="Descendre plus vite"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run Text="Pièce vers la gauche"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run Text="Pièce vers la droite"/></TextBlock>
 
         <StackPanel DockPanel.Dock="Right" Width="172" Margin="0,0,0,10">
             <Image x:Name="image" Height="188" Source="logo.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,0,0"/>
             <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Votre score :" FontFamily="Ostrich Sans" Foreground="#FFDEDEDE" Height="16" FontSize="16"/>
-            <Label Content="Label" Height="118" x:Name="Score" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10,0,56,0" Width="106" FontFamily="Ostrich Sans" Foreground="#FFDEDEDE" />
+            <Label Content="Label" Height="118" x:Name="Score" FontSize="20" FontWeight="Bold" HorizontalAlignment="Right" Margin="10,0,56,0" Width="106" FontFamily="Ostrich Sans" Foreground="#FFDEDEDE" VerticalAlignment="Center" />
             <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Nombre de lignes remplies :" FontFamily="Ostrich Sans" Foreground="#FFDEDEDE" Height="20" FontSize="16"/>
-            <Label Content="Label" Height="116" x:Name="Lignes" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10,0,56,0" Width="106" FontFamily="Ostrich Sans" Foreground="#FFDEDEDE" />
+            <Label Content="Label" Height="99" x:Name="Lignes" FontSize="20" FontWeight="Bold" HorizontalAlignment="Right" Margin="10,0,56,0" Width="106" FontFamily="Ostrich Sans" Foreground="#FFDEDEDE" VerticalAlignment="Center" />
             <TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text="Nouvelle partie (F2)" Foreground="#FFDEDEDE"/>
             <TextBlock x:Name="textBlock3" TextWrapping="Wrap" Text="Pause (F3)" Foreground="#FFDEDEDE"/>
             <TextBlock x:Name="textBlock4" TextWrapping="Wrap" Text="Quitter (Échap)" Foreground="#FFDEDEDE"/>
