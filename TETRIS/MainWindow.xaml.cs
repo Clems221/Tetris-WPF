@@ -92,6 +92,12 @@ namespace TETRIS
                     break;
             }
         }
-
+        private void PlaySound()
+        {
+            var uri = new Uri("TETRIS.mp3");
+            var player = new MediaPlayer();
+            player.Open(uri);
+            player.Play();
+        }
     }
 }
