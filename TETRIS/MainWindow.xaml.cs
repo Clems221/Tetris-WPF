@@ -40,6 +40,7 @@ namespace TETRIS
         {
             PlateauTetris.Children.Clear();
             monPlateau = new Plateau(PlateauTetris);
+
             Timer.Start();
         }
         private void GameLoaded(object sender, EventArgs e)
@@ -91,5 +92,6 @@ namespace TETRIS
                     break;
             }
         }
+
     }
 }

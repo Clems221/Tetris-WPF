@@ -59,5 +59,6 @@
                 <ColumnDefinition Width="25" />
             </Grid.ColumnDefinitions>
         </Grid>
+        <ListBox x:Name="listBox" Height="529" VerticalAlignment="Top" Width="100"/>
     </DockPanel>
 </Window>

@@ -14,6 +14,7 @@ namespace TETRIS
         private Point[] currForme; //on récupère les valeurs X et Y de notre plateau
         private Brush Couleur;
         private bool rotate;
+        public static Random rand = new Random();
 
         //Créér une pièce
         public Piece()
@@ -66,8 +67,8 @@ namespace TETRIS
         #region Générer les formes de chaque pièces
         private Point[] setRandomFormes()
         {
-            Random rand = new Random();
-            switch (rand.Next() % 7)
+            
+            switch (Piece.rand.Next(0,7))
             {
                 case 0: // I
                     rotate = true;
@@ -105,9 +106,9 @@ namespace TETRIS
                         new Point(1,0),
                         new Point(1,-1)
                     };
-                case 4: // S
+                case 4: // T
                     rotate = true;
-                    Couleur = Brushes.Green;
+                    Couleur = Brushes.Purple;
                     return new Point[] {
                         new Point(0,0),
                         new Point(-1,0),
@@ -116,7 +117,7 @@ namespace TETRIS
                     };
                 case 5: // T
                     rotate = true;
-                    Couleur = Brushes.Purple;
+                    Couleur = Brushes.Red;
                     return new Point[] {
                         new Point(0,0),
                         new Point(-1,0),
@@ -125,12 +126,13 @@ namespace TETRIS
                     };
                 case 6: // Z
                     rotate = true;
-                    Couleur = Brushes.Red;
+                    Couleur = Brushes.Green;
                     return new Point[] {
-                        new Point(0,0),
-                        new Point(-1,0),
-                        new Point(0,-1),
-                        new Point(1,0)
+                   new Point(0,0),
+                        new Point(1,0),
+                        new Point(0,1),
+                        new Point(-1,
+                        1),
                     };
                 default:
                     return null;
