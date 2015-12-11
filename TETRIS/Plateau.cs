@@ -70,7 +70,6 @@ namespace TETRIS
         }
         #endregion
         #region Supression de lignes
-
         private void currJeuSuppr()
         {
             Point Position = Piece.getPosition();
