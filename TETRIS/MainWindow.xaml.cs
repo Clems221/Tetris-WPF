@@ -1,8 +1,17 @@
 ﻿using System;
-using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace TETRIS
@@ -10,14 +19,10 @@ namespace TETRIS
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-
     public partial class MainWindow : Window
     {
         DispatcherTimer Timer;
         Plateau monPlateau;
-        MediaPlayer player = new MediaPlayer();
-
-
         public MainWindow()
         {
             InitializeComponent();
@@ -43,18 +48,15 @@ namespace TETRIS
             Score.Content = monPlateau.getScore().ToString("000000");
             Lignes.Content = monPlateau.getLignes().ToString("000000");
             monPlateau.PieceMovDown();
-
         }
         private void GamePause()
         {
             if (Timer.IsEnabled)
             {
-                player.Pause();
                 Timer.Stop();
             }
             else
             {
-                player.Play();
                 Timer.Start();
             }
         }
@@ -92,16 +94,10 @@ namespace TETRIS
         }
         private void PlaySound()
         {
-            Uri uri = new Uri("TETRIS.wav", UriKind.Relative);
+            Uri uri = new Uri(".\\TETRIS\\TETRIS.aiff",UriKind.Relative);
+            var player = new MediaPlayer();
             player.Open(uri);
             player.Play();
-            player.MediaEnded += new EventHandler(Media_Ended);
         }
-        private void Media_Ended(object sender, EventArgs e)
-        {
-            player.Position = TimeSpan.Zero;
-            player.Play();
-        }
-
     }
 }
