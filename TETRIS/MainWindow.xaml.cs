@@ -23,6 +23,7 @@ namespace TETRIS
     {
         DispatcherTimer Timer;
         Plateau monPlateau;
+        MediaPlayer player = new MediaPlayer();
         public MainWindow()
         {
             InitializeComponent();
@@ -54,10 +55,12 @@ namespace TETRIS
             if (Timer.IsEnabled)
             {
                 Timer.Stop();
+                player.Pause();
             }
             else
             {
                 Timer.Start();
+                player.Play();
             }
         }
 
@@ -94,10 +97,17 @@ namespace TETRIS
         }
         private void PlaySound()
         {
-            Uri uri = new Uri(".\\TETRIS\\TETRIS.aiff",UriKind.Relative);
-            var player = new MediaPlayer();
+            Uri uri = new Uri("TETRIS.wav",UriKind.Relative);
             player.Open(uri);
+            
+            player.Play();
+            player.MediaEnded += new EventHandler(Media_Ended);
+        }
+        private void Media_Ended(object sender, EventArgs e)
+        {
+            player.Position = TimeSpan.Zero;
             player.Play();
         }
+
     }
 }
