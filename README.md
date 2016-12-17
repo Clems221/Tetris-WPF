@@ -1,3 +1,3 @@
 # Tetris-WPF
 
-Jeu Tetris développé en WPF.
+##Tetris like developped on WPF.
